@@ -80,6 +80,19 @@ font-size:15px;
 <p id="data"></p>
 
 <p class="note"><b>We will contact you shortly.</b></p>
+<p class="note"><b>Please send a screenshot of this page to <p id="num">9845995950</p>
+
+<button onclick="copyNum()">Copy Number</button>
+
+<script>
+function copyNum() {
+  navigator.clipboard.writeText(
+    document.getElementById("num").innerText
+  );
+
+  alert("Number copied!");
+}
+</script>for confirmation</b></p>
 
 <a class="home-btn" href="index.html">Return to Home</a>
 
@@ -100,3 +113,6 @@ document.getElementById("data").innerHTML = `
 
 </body>
 </html>
+
+
+
