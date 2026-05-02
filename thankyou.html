@@ -1,0 +1,24 @@
+<!-- =====================
+FILE 3: thankyou.html
+===================== --><!DOCTYPE html><html>
+<head>
+<title>Thank You</title>
+<style>
+body{text-align:center;font-family:Arial;background:#f3f3f3;padding:60px;}
+.box{background:white;padding:30px;display:inline-block;border-radius:10px;}
+</style>
+</head>
+<body><div class="box">
+<h1>Thank You!</h1>
+<p id="data"></p>
+<a href="index.html">Go Home</a>
+</div>
+
+<script>
+let x=new URLSearchParams(window.location.search);
+document.getElementById("data").innerHTML=
+`Name: ${x.get('name')}<br>Phone: ${x.get('phone')}<br>Plan: ${x.get('plan')}<br>Time: ${x.get('time')}`;
+</script>
+
+</body>
+</html>
