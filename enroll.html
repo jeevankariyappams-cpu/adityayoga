@@ -32,10 +32,10 @@ margin:10px 0;
 button{
 width:100%;
 padding:12px;
-background:#4CAF50;
+background:#28a745;
 color:white;
 border:none;
-border-radius:5px;
+border-radius:8px;
 cursor:pointer;
 }
 
@@ -55,44 +55,73 @@ color:#333;
 
 <h2>Join Online Yoga Classes</h2>
 
-<form onsubmit="go(event)">
+<form id="form">
 
-<input id="name" placeholder="Name" required>
-<input id="phone" placeholder="Phone" required>
+  <label>Name</label>
+  <input type="text" name="name" placeholder="Enter your name" required>
 
-<select id="plan">
-<option>Morning Session</option>
-<option>Evening Session</option>
-</select>
+  <label>Phone Number</label>
+  <input type="tel" name="phone" placeholder="Enter phone number" required>
 
-<!-- UPDATED TIMINGS -->
-<select id="time">
-<option>7:15 AM - 8:15 AM</option>
-<option>6:00 PM - 7:00 PM</option>
-</select>
+  <label>Yoga Session Plan</label>
+  <select name="plan">
+    <option value="Morning Classes">Morning Classes</option>
+    <option value="Evening Classes">Evening Classes</option>
+  </select>
 
-<button type="submit">Submit</button>
+  <label>Timings</label>
+  <select name="timings">
+    <option value="7:15 AM - 8:15 AM">7:15 AM - 8:15 AM </option>
+    <option value="6:00 PM - 7:00 PM">6 PM - 7 PM</option>
+  </select>
+
+  <button type="submit">Submit</button>
+
 </form>
 
-<!-- LINK BACK TO HOME PAGE -->
-<a href="index.html">⬅ Back to Home</a>
+<a href="index.html"><b>Back to Home</b></a>
 
 </div>
 
 <script>
-function go(e){
-e.preventDefault();
+document.getElementById("form").addEventListener("submit", async function(e) {
+  e.preventDefault();
 
-let n=document.getElementById('name').value;
-let p=document.getElementById('phone').value;
-let pl=document.getElementById('plan').value;
-let t=document.getElementById('time').value;
+  let data = {
+    name: this.name.value,
+    phone: this.phone.value,
+    plan: this.plan.value,
+    timings: this.timings.value
+  };
 
-window.location.href=`thankyou.html?name=${n}&phone=${p}&plan=${pl}&time=${t}`;
-}
+  try {
+
+    await fetch("https://script.google.com/macros/s/AKfycbxLwNJ_DiV5eR-A00HGB16RMUjE__ppUHnkadXfPoLGidMfsbDwfpxO5mgVrXFKdYnb/exec", {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(data)
+    });
+
+    // Redirect after successful submission
+    window.location.href =
+`thankyou.html?name=${encodeURIComponent(data.name)}
+&phone=${encodeURIComponent(data.phone)}
+&plan=${encodeURIComponent(data.plan)}
+&time=${encodeURIComponent(data.timings)}`;
+
+  } catch (error) {
+
+    alert("Submission failed. Try again.");
+    console.log(error);
+
+  }
+});
 </script>
 
 </body>
 </html>
+
+
+
 
 
