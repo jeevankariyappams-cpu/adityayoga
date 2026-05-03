@@ -80,7 +80,7 @@ font-size:15px;
 <p id="data"></p>
 
 <p class="note"><b>We will contact you shortly.</b></p>
-<p class="note"><b>Please send a screenshot of this page to <p id="num">9845995950</p>
+<p class="note"><b>Any Queries, Contact<br> <p id="num">9845995950</p>
 
 <button onclick="copyNum()">Copy Number</button>
 
@@ -92,27 +92,17 @@ function copyNum() {
 
   alert("Number copied!");
 }
-</script>for confirmation</b></p>
+</script>
 
 <a class="home-btn" href="index.html">Return to Home</a>
 
 </div>
 
-<script>
-
-let x = new URLSearchParams(window.location.search);
-
-document.getElementById("data").innerHTML = `
-<b>Name:</b> ${x.get('name') || ''}<br>
-<b>Phone:</b> ${x.get('phone') || ''}<br>
-<b>Plan:</b> ${x.get('plan') || ''}<br>
-<b>Time:</b> ${x.get('time') || ''}
-`;
-
-</script>
-
 </body>
 </html>
+
+
+
 
 
 
